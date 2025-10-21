@@ -1,0 +1,86 @@
+<main class="page">
+  <header class="hero" id="home">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">{{ hero.eyebrow }}</p>
+      <h1>{{ hero.title }}</h1>
+      <p class="hero__description">{{ hero.description }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#usage">Ver uso del contenedor</a>
+        <a class="btn btn--ghost" href="#testing">Probar mocks</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="features">
+    <h2>Características principales</h2>
+    <div class="grid">
+      <article class="card" *ngFor="let feature of features">
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="prerequisites">
+    <h2>Requisitos previos</h2>
+    <ul class="list">
+      <li *ngFor="let item of prerequisites">{{ item }}</li>
+    </ul>
+  </section>
+
+  <section class="section usage" id="usage">
+    <h2>Uso del DevContainer</h2>
+    <div class="usage-grid">
+      <article class="card">
+        <h3>Cómo se ejecuta la aplicación</h3>
+        <p>Levanta el servidor de desarrollo dentro del contenedor o en tu entorno local.</p>
+        <pre><code>{{ usageSnippets.start }}</code></pre>
+        <small>Se expondrá en <code>http://localhost:4200</code>.</small>
+      </article>
+      <article class="card">
+        <h3>Ejemplo de petición mock</h3>
+        <p>Consulta el mismo mensaje que antes exponía el backend de Spring Boot.</p>
+        <pre><code>{{ usageSnippets.mock }}</code></pre>
+        <small>El mock replica <code>GET /api/welcome</code>.</small>
+      </article>
+      <article class="card testing-card" id="testing">
+        <h3>Testing con mocks interactivos</h3>
+        <p>Haz clic para ejecutar las simulaciones y visualizar su respuesta.</p>
+        <div class="actions">
+          <button type="button" (click)="triggerMock('fetch')" [disabled]="isLoading">
+            Consultar mensaje
+          </button>
+          <button type="button" (click)="triggerMock('update')" [disabled]="isLoading">
+            Actualizar mensaje
+          </button>
+        </div>
+        <p class="loading" *ngIf="isLoading">Cargando respuesta mock…</p>
+        <pre *ngIf="responseText"><code>{{ responseTitle }}
+
+{{ responseText }}</code></pre>
+        <p class="error" *ngIf="errorText">{{ errorText }}</p>
+        <p class="hint">También puedes ejecutar <code>{{ usageSnippets.test }}</code> para lanzar la suite automatizada.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="customization">
+    <h2>Personalización</h2>
+    <p>Adapta la plantilla a tu proyecto siguiendo estas ideas:</p>
+    <ul class="list">
+      <li *ngFor="let option of customization">{{ option }}</li>
+    </ul>
+  </section>
+
+  <section class="section" id="license">
+    <h2>Licencia</h2>
+    <p>
+      El código se distribuye bajo licencia MIT. Si necesitas revisar los términos completos, consulta el fichero
+      <code>LICENSE</code> incluido en el repositorio.
+    </p>
+  </section>
+</main>
+<footer class="footer">
+  <p>Hecho con Angular y DevContainers.</p>
+</footer>

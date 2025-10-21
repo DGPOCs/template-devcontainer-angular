@@ -1,66 +1,71 @@
-# Plantilla Spring Boot con DevContainers
+# Plantilla Angular con DevContainers
 
-Este repositorio ofrece una plantilla lista para usar que combina un proyecto Spring Boot con la configuración necesaria para ejecutarlo dentro de un [Dev Container](https://containers.dev/). Está pensado como punto de partida para crear APIs Java modernas manteniendo un entorno de desarrollo reproducible.
+Esta plantilla transforma el proyecto original de Spring Boot en un frontal Angular que mantiene la misma experiencia dentro de un [Dev Container](https://containers.dev/). Proporciona una base moderna para crear interfaces que consuman APIs, utilizando mocks locales para emular los endpoints de bienvenida descritos en el proyecto inicial.
+
+## Home
+
+Bienvenido a la plantilla de **DevContainer para Angular**. Obtendrás un entorno reproducible con Node.js 20, Angular CLI y las dependencias necesarias para desarrollar, servir y probar el frontal sin salir del contenedor.
 
 ## Características principales
 
-- **Spring Boot 3.2** con Java 21 y Maven.
-- API REST sencilla con dos endpoints:
-  - `GET /api/welcome`: devuelve el mensaje de bienvenida actual.
-  - `POST /api/welcome`: actualiza el mensaje de bienvenida (requiere un cuerpo JSON con el campo `message`).
-- Cobertura de pruebas automatizadas mediante `MockMvc`.
-- Configuración de Dev Container para trabajar de forma consistente en VS Code o GitHub Codespaces.
+- **Angular 17** con estilos SCSS y soporte para componentes standalone.
+- Pantalla de bienvenida que replica la funcionalidad previa mediante mocks:
+  - Acción para recuperar el mensaje actual (`GET /api/welcome`).
+  - Acción para simular la actualización del mensaje (`POST /api/welcome`).
+- Tests automatizados con Karma, Jasmine y Chrome Headless (via Puppeteer).
+- Configuración de Dev Container lista para VS Code o GitHub Codespaces.
 
 ## Requisitos previos
 
 - [VS Code](https://code.visualstudio.com/) con la extensión **Dev Containers** o acceso a **GitHub Codespaces**.
-- Docker instalado y ejecutándose si se usa VS Code en local.
+- Docker instalado y ejecutándose si trabajas en local.
 
 ## Uso del Dev Container
 
 1. Abre el repositorio en VS Code.
-2. Cuando se te solicite, selecciona **Reopen in Container** (o usa el comando `Dev Containers: Reopen in Container`).
-3. La imagen incluye Java 21 y Maven. Tras la construcción del contenedor se ejecuta `mvn dependency:go-offline` para precargar dependencias.
+2. Elige **Reopen in Container** (o usa `Dev Containers: Reopen in Container`).
+3. Tras la construcción se ejecutará `npm install` para preparar las dependencias de Angular.
 
-## Ejecución de la aplicación
+### Cómo se ejecuta la aplicación
 
-Una vez dentro del Dev Container (o en tu entorno local con Java 21 y Maven):
-
-```bash
-mvn spring-boot:run
-```
-
-La API estará disponible en `http://localhost:8080`.
-
-### Ejemplo de peticiones
-
-- Obtener el mensaje actual:
-
-  ```bash
-  curl http://localhost:8080/api/welcome
-  ```
-
-- Actualizar el mensaje:
-
-  ```bash
-  curl -X POST http://localhost:8080/api/welcome \
-       -H "Content-Type: application/json" \
-       -d '{"message": "Hola desde Dev Containers"}'
-  ```
-
-## Pruebas
-
-Ejecuta la suite de pruebas con:
+Dentro del contenedor (o en tu máquina con Node.js 20):
 
 ```bash
-mvn test
+npm start
 ```
+
+El servidor de desarrollo quedará disponible en `http://localhost:4200`.
+
+### Ejemplo de petición simulada
+
+La UI expone un ejemplo equivalente al antiguo backend:
+
+```bash
+curl http://localhost:4200/assets/mocks/welcome.json
+```
+
+Internamente, los botones "Consultar mensaje" y "Actualizar mensaje" usan mocks de RxJS que replican las respuestas de `GET /api/welcome` y `POST /api/welcome`.
+
+### Testing con mocks interactivos
+
+En la sección de **Testing** de la aplicación encontrarás dos botones:
+
+- **Consultar mensaje** muestra el resultado del mock `GET /api/welcome`.
+- **Actualizar mensaje** simula el `POST /api/welcome` y enseña la respuesta mock.
+
+También puedes lanzar la batería de pruebas con:
+
+```bash
+npm test
+```
+
+El comando ejecuta Karma en modo headless dentro del contenedor.
 
 ## Personalización
 
-- Modifica el mensaje de bienvenida por defecto editando `src/main/resources/application.properties` (`app.welcome-message`).
-- Añade nuevas dependencias en `pom.xml` según las necesidades de tu proyecto.
-- Ajusta la configuración del contenedor en `.devcontainer/devcontainer.json` para incluir herramientas adicionales.
+- Ajusta los textos y la estructura de la pantalla editando los componentes en `src/app/`.
+- Añade nuevos mocks o integra APIs reales creando servicios en `src/app/services/`.
+- Modifica `.devcontainer/devcontainer.json` si necesitas herramientas adicionales o versiones distintas de Node.js.
 
 ## Licencia
 
