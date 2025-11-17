@@ -4,7 +4,7 @@ Esta plantilla transforma el proyecto original de Spring Boot en un frontal Angu
 
 ## Home
 
-Bienvenido a la plantilla de **DevContainer para Angular**. Obtendrás un entorno reproducible con Node.js 20, Angular CLI y las dependencias necesarias para desarrollar, servir y probar el frontal sin salir del contenedor.
+Bienvenido a la plantilla de **DevContainer para Angular**. Obtendrás un entorno reproducible con Node.js 20, Angular CLI y las dependencias necesarias para desarrollar y servir el frontal sin salir del contenedor.
 
 ## Características principales
 
@@ -12,7 +12,7 @@ Bienvenido a la plantilla de **DevContainer para Angular**. Obtendrás un entorn
 - Pantalla de bienvenida que replica la funcionalidad previa mediante mocks:
   - Acción para recuperar el mensaje actual (`GET /api/welcome`).
   - Acción para simular la actualización del mensaje (`POST /api/welcome`).
-- Tests automatizados con Karma, Jasmine y Chrome Headless (via Puppeteer).
+- Dependencias reducidas a lo imprescindible para desarrollar y servir el frontal.
 - Configuración de Dev Container lista para VS Code o GitHub Codespaces.
 
 ## Requisitos previos
@@ -45,21 +45,6 @@ curl http://localhost:4200/assets/mocks/welcome.json
 ```
 
 Internamente, los botones "Consultar mensaje" y "Actualizar mensaje" usan mocks de RxJS que replican las respuestas de `GET /api/welcome` y `POST /api/welcome`.
-
-### Testing con mocks interactivos
-
-En la sección de **Testing** de la aplicación encontrarás dos botones:
-
-- **Consultar mensaje** muestra el resultado del mock `GET /api/welcome`.
-- **Actualizar mensaje** simula el `POST /api/welcome` y enseña la respuesta mock.
-
-También puedes lanzar la batería de pruebas con:
-
-```bash
-npm test
-```
-
-El comando ejecuta Karma en modo headless dentro del contenedor.
 
 ## Personalización
 

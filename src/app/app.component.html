@@ -7,7 +7,7 @@
       <p class="hero__description">{{ hero.description }}</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="#usage">Ver uso del contenedor</a>
-        <a class="btn btn--ghost" href="#testing">Probar mocks</a>
+        <a class="btn btn--ghost" href="#mocks">Probar mocks</a>
       </div>
     </div>
   </header>
@@ -44,9 +44,9 @@
         <pre><code>{{ usageSnippets.mock }}</code></pre>
         <small>El mock replica <code>GET /api/welcome</code>.</small>
       </article>
-      <article class="card testing-card" id="testing">
-        <h3>Testing con mocks interactivos</h3>
-        <p>Haz clic para ejecutar las simulaciones y visualizar su respuesta.</p>
+      <article class="card testing-card" id="mocks">
+        <h3>Simulaciones con mocks</h3>
+        <p>Haz clic para ejecutar las peticiones ficticias y visualizar su respuesta.</p>
         <div class="actions">
           <button type="button" (click)="triggerMock('fetch')" [disabled]="isLoading">
             Consultar mensaje
@@ -60,7 +60,6 @@
 
 {{ responseText }}</code></pre>
         <p class="error" *ngIf="errorText">{{ errorText }}</p>
-        <p class="hint">También puedes ejecutar <code>{{ usageSnippets.test }}</code> para lanzar la suite automatizada.</p>
       </article>
     </div>
   </section>
