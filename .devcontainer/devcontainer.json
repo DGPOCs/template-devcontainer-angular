@@ -1,5 +1,6 @@
 {
   "name": "Angular DevContainer",
+  "runArgs": ["--name", "Angular-devcontainer-template"],
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
   "postCreateCommand": "npm install",
   "forwardPorts": [4200],
