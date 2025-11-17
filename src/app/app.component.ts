@@ -15,7 +15,7 @@ export class AppComponent {
     eyebrow: 'DevContainer Template',
     title: 'DevContainer Angular para APIs mockeadas',
     description:
-      'Desarrolla una experiencia frontend moderna sobre un entorno reproducible con Angular, Node.js 20 y pruebas automatizadas listas para ejecutar.'
+      'Desarrolla una experiencia frontend moderna sobre un entorno reproducible con Angular, Node.js 20 y mocks locales listos para usar.'
   };
 
   readonly features = [
@@ -28,15 +28,15 @@ export class AppComponent {
       description: 'Simula los endpoints GET y POST de bienvenida para iterar sobre la interfaz sin depender de un backend real.'
     },
     {
-      title: 'Testing integrado',
-      description: 'Karma + Jasmine ejecutándose en Chrome Headless mediante Puppeteer dentro del contenedor.'
+      title: 'Stack ligero',
+      description: 'Dependencias reducidas a lo imprescindible para desarrollar y servir la aplicación en el contenedor.'
     }
   ];
 
   readonly prerequisites = [
     'VS Code con la extensión Dev Containers o acceso a GitHub Codespaces.',
     'Docker en ejecución si trabajas en local.',
-    'Al menos 4GB de RAM libres para instalar dependencias y ejecutar tests.'
+    'Al menos 4GB de RAM libres para instalar dependencias y servir la aplicación.'
   ];
 
   readonly customization = [
@@ -47,8 +47,7 @@ export class AppComponent {
 
   readonly usageSnippets = {
     start: 'npm start',
-    mock: 'curl http://localhost:4200/assets/mocks/welcome.json',
-    test: 'npm test'
+    mock: 'curl http://localhost:4200/assets/mocks/welcome.json'
   };
 
   readonly mockUpdateMessage = '¡Hola desde Dev Containers en Angular!';
