@@ -1,7 +1,7 @@
 {
   "name": "Angular DevContainer",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libatk1.0-0 libatk-bridge2.0-0 libnss3 libx11-xcb1 libxcb1 libxcomposite1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxss1 libgtk-3-0 libdrm2 libgbm1 libpango-1.0-0 libpangocairo-1.0-0 libcups2 libasound2t64 && npm install",
+  "postCreateCommand": "npm install",
   "forwardPorts": [4200],
   "customizations": {
     "vscode": {
